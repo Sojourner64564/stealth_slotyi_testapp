@@ -4,7 +4,8 @@ import 'package:stealth_slotyi_testapp/core/assets/app_colors.dart';
 class AppShadowBox{
   static const shadowBox1 = BoxShadow(
     color: AppColors.black12Color,
-    blurRadius: 15,
-    offset: Offset(0, 10),
+    blurRadius: 4,
+    offset: Offset(0, 5),
   );
+
 }
