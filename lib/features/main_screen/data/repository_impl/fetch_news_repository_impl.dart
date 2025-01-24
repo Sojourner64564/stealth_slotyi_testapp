@@ -22,7 +22,7 @@ class FetchNewsRepositoryImpl implements FetchNewsRepository{
     try{
       if(! await networkInfo.isConnected) return Left(NoInternetFailure('No internet'));
       final apiKey = dotenv.env[EnvVarName.apiKeyVar];
-      if(apiKey==null) throw AppFailure('No apikey in dotenv');
+      if(apiKey==null) return Left(AppFailure('No apikey in dotenv'));
       final newsModel = await retrofitClientDataRemoteInstance.client().fetchNewsByKeyword(apiKey, keyword, category);
       return Right(newsModel.toEntity());
     } on DioException catch(e){
@@ -37,7 +37,7 @@ class FetchNewsRepositoryImpl implements FetchNewsRepository{
     try{
       if(! await networkInfo.isConnected) return Left(NoInternetFailure('No internet'));
       final apiKey = dotenv.env[EnvVarName.apiKeyVar];
-      if(apiKey==null) throw AppFailure('No apikey in dotenv');
+      if(apiKey==null) return Left(AppFailure('No apikey in dotenv'));
       final newsModel = await retrofitClientDataRemoteInstance.client().fetchNewsByTopic(apiKey, category);
       return Right(newsModel.toEntity());
     } on DioException catch(e){

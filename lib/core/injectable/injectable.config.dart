@@ -19,6 +19,10 @@ import '../../features/main_screen/data/repository_impl/fetch_news_repository_im
     as _i792;
 import '../../features/main_screen/domain/repository/fetch_news_repository.dart'
     as _i98;
+import '../../features/main_screen/domain/usecase/fetch_news_by_topic_uc.dart'
+    as _i238;
+import '../../features/main_screen/presentation/controllers/fetch_news_controller_cubit.dart'
+    as _i720;
 import '../../features/main_screen/presentation/widget/news_topic_picker_widget/controller/news_topic_picker_controller_cubit.dart'
     as _i563;
 import '../network/internet_connection_checker.dart' as _i657;
@@ -52,6 +56,10 @@ _i174.GetIt $initGetIt(
             gh<_i820.RetrofitClientDataRemoteInstance>(),
             gh<_i932.NetworkInfo>(),
           ));
+  gh.lazySingleton<_i238.FetchNewsUC>(
+      () => _i238.FetchNewsUC(gh<_i98.FetchNewsRepository>()));
+  gh.lazySingleton<_i720.FetchNewsControllerCubit>(
+      () => _i720.FetchNewsControllerCubit(gh<_i238.FetchNewsUC>()));
   return getIt;
 }
 

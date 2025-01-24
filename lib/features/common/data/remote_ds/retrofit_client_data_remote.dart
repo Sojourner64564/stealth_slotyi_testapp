@@ -9,10 +9,10 @@ part 'retrofit_client_data_remote.g.dart';
 abstract class RetrofitClientDataRemote {
   factory RetrofitClientDataRemote(Dio dio, {String? baseUrl}) = _RetrofitClientDataRemote;
 
-  @GET('/tasks/top-headlines?q={keyword}&category={category}&apiKey={apiKey}}')
+  @GET('/top-headlines?q={keyword}&category={category}&apiKey={apiKey}')
   Future<NewsModel> fetchNewsByKeyword(@Path('apiKey') String apiKey, @Path('keyword') String keyword,  @Path('category') String category,);
 
-  @GET('/tasks/top-headlines?&category={category}&apiKey={apiKey}}')
+  @GET('/top-headlines?category={category}&apiKey={apiKey}')
   Future<NewsModel> fetchNewsByTopic(@Path('apiKey') String apiKey, @Path('category') String category);
 }
 

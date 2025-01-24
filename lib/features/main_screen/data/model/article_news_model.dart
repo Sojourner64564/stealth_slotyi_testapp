@@ -3,7 +3,7 @@ import 'package:stealth_slotyi_testapp/features/main_screen/data/model/source_ne
 
 part 'article_news_model.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class ArticleNewsModel {
   const ArticleNewsModel({
     this.source = const SourceNewsModel(),
@@ -11,7 +11,7 @@ class ArticleNewsModel {
     this.title = '',
     this.description = '',
     this.url = '',
-    this.urlToImage = '',
+    this.urlToImage = 'kjhvuv',
     this.publishedAt = '',
     this.content = ''
   });

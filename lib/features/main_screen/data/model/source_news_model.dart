@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'source_news_model.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class SourceNewsModel{
   const SourceNewsModel({
     this.id = '',

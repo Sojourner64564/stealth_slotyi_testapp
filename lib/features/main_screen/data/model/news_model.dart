@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'news_model.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class NewsModel {
   final String status;
   final int totalResults;

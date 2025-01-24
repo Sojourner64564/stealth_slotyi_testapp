@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stealth_slotyi_testapp/core/assets/app_colors.dart';
 import 'package:stealth_slotyi_testapp/core/assets/app_textstyles.dart';
 import 'package:stealth_slotyi_testapp/core/injectable/injectable.dart';
+import 'package:stealth_slotyi_testapp/features/main_screen/presentation/controllers/fetch_news_controller_cubit.dart';
 import 'package:stealth_slotyi_testapp/features/main_screen/presentation/widget/news_topic_picker_widget/controller/news_topic_picker_controller_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,11 +16,12 @@ class NewsTopicPickerWidget extends StatelessWidget {
     'Health',
     'Entertainment',
     'Sports',
-    'Techology',
+    'Technology',
   ];
 
   final newsTopicPickerControllerCubit =
       getIt<NewsTopicPickerControllerCubit>();
+  final fetchNewsControllerCubit = getIt<FetchNewsControllerCubit>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +36,15 @@ class NewsTopicPickerWidget extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               final EdgeInsets tilePadding = index == 0
                   ? const EdgeInsets.only(left: 19)
-                  : index == _list.length
-                      ? const EdgeInsets.only(left: 19)
+                  : index == _list.length-1
+                      ? const EdgeInsets.only(right: 19)
                       : EdgeInsets.zero;
               return Padding(
                 padding: tilePadding,
                 child: InkWell(
                   onTap: () {
+                    fetchNewsControllerCubit.categoryIndex = index;
+                    fetchNewsControllerCubit.fetchNewsByCategoryIDAndMBKeyword();
                     newsTopicPickerControllerCubit.pickTopic(index);
                   },
                   borderRadius: BorderRadius.circular(19),

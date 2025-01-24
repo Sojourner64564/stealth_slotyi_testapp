@@ -40,7 +40,7 @@ class _RetrofitClientDataRemote implements RetrofitClientDataRemote {
     )
         .compose(
           _dio.options,
-          '/tasks/top-headlines?q=${keyword}&category=${category}&apiKey=${apiKey}}',
+          '/top-headlines?q=${keyword}&category=${category}&apiKey=${apiKey}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -76,7 +76,7 @@ class _RetrofitClientDataRemote implements RetrofitClientDataRemote {
     )
         .compose(
           _dio.options,
-          '/tasks/top-headlines?&category=${category}&apiKey=${apiKey}}',
+          '/top-headlines?category=${category}&apiKey=${apiKey}',
           queryParameters: queryParameters,
           data: _data,
         )

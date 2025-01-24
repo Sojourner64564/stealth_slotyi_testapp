@@ -15,8 +15,8 @@ ArticleNewsModel _$ArticleNewsModelFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String? ?? '',
       description: json['description'] as String? ?? '',
       url: json['url'] as String? ?? '',
-      urlToImage: json['url_to_image'] as String? ?? '',
-      publishedAt: json['published_at'] as String? ?? '',
+      urlToImage: json['urlToImage'] as String? ?? 'kjhvuv',
+      publishedAt: json['publishedAt'] as String? ?? '',
       content: json['content'] as String? ?? '',
     );
 
@@ -27,7 +27,7 @@ Map<String, dynamic> _$ArticleNewsModelToJson(ArticleNewsModel instance) =>
       'title': instance.title,
       'description': instance.description,
       'url': instance.url,
-      'url_to_image': instance.urlToImage,
-      'published_at': instance.publishedAt,
+      'urlToImage': instance.urlToImage,
+      'publishedAt': instance.publishedAt,
       'content': instance.content,
     };
