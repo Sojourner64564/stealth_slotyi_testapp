@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stealth_slotyi_testapp/core/assets/app_textstyles.dart';
 import 'package:stealth_slotyi_testapp/core/injectable/injectable.dart';
+import 'package:stealth_slotyi_testapp/core/routes/app_router.dart';
 import 'package:stealth_slotyi_testapp/features/main_screen/presentation/controllers/fetch_news_controller_cubit.dart';
 import 'package:stealth_slotyi_testapp/features/main_screen/presentation/widget/news_tile_widget.dart';
 
@@ -31,13 +33,18 @@ class NewsListViewWidget extends StatelessWidget {
               itemCount: state.newsEntity.articles.length,
               itemBuilder: (BuildContext context, int index) {
                 final article = state.newsEntity.articles[index];
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 19),
-                  child: NewsTileWidget(
-                    title: article.title,
-                    subtitle: article.description,
-                    date: 'MM.DD.YYYY',
-                    imgUrl: article.urlToImage,
+                return GestureDetector(
+                  onTap: (){
+                    context.router.push(DetailedRoute(articleNewsEntity: article));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 19),
+                    child: NewsTileWidget(
+                      title: article.title,
+                      subtitle: article.description,
+                      date: 'MM.DD.YYYY', //TODO сделать конвертер
+                      imgUrl: article.urlToImage,
+                    ),
                   ),
                 );
               },

@@ -9,6 +9,7 @@ import 'package:stealth_slotyi_testapp/features/common/data/remote_ds/retrofit_c
 import 'package:stealth_slotyi_testapp/features/main_screen/data/model/extensions/extension_news_model_to_entity.dart';
 import 'package:stealth_slotyi_testapp/features/main_screen/domain/entity/news_entity.dart';
 import 'package:stealth_slotyi_testapp/features/main_screen/domain/repository/fetch_news_repository.dart';
+import 'dart:developer';
 
 @LazySingleton(as: FetchNewsRepository)
 class FetchNewsRepositoryImpl implements FetchNewsRepository{
@@ -23,11 +24,13 @@ class FetchNewsRepositoryImpl implements FetchNewsRepository{
       if(! await networkInfo.isConnected) return Left(NoInternetFailure('No internet'));
       final apiKey = dotenv.env[EnvVarName.apiKeyVar];
       if(apiKey==null) return Left(AppFailure('No apikey in dotenv'));
-      final newsModel = await retrofitClientDataRemoteInstance.client().fetchNewsByKeyword(apiKey, keyword, category);
+      final newsModel = await retrofitClientDataRemoteInstance.client().fetchNewsByKeyword(apiKey: apiKey,keyword:  keyword,category:  category);
       return Right(newsModel.toEntity());
     } on DioException catch(e){
+      log(e.toString(), stackTrace: e.stackTrace);
       return Left(ServerFailure(e.toString()));
     } catch(e){
+      log(e.toString());
       return Left(AppFailure(e.toString()));
     }
   }
@@ -38,11 +41,13 @@ class FetchNewsRepositoryImpl implements FetchNewsRepository{
       if(! await networkInfo.isConnected) return Left(NoInternetFailure('No internet'));
       final apiKey = dotenv.env[EnvVarName.apiKeyVar];
       if(apiKey==null) return Left(AppFailure('No apikey in dotenv'));
-      final newsModel = await retrofitClientDataRemoteInstance.client().fetchNewsByTopic(apiKey, category);
+      final newsModel = await retrofitClientDataRemoteInstance.client().fetchNewsByTopic(apiKey: apiKey, category:  category);
       return Right(newsModel.toEntity());
     } on DioException catch(e){
+      log(e.toString(), stackTrace: e.stackTrace);
       return Left(ServerFailure(e.toString()));
     } catch(e){
+      log(e.toString());
       return Left(AppFailure(e.toString()));
     }
   }

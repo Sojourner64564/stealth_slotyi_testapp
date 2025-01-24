@@ -7,18 +7,26 @@ part 'retrofit_client_data_remote.g.dart';
 
 @RestApi(baseUrl: 'https://newsapi.org/v2')
 abstract class RetrofitClientDataRemote {
-  factory RetrofitClientDataRemote(Dio dio, {String? baseUrl}) = _RetrofitClientDataRemote;
+  factory RetrofitClientDataRemote(Dio dio, {String? baseUrl}) =
+      _RetrofitClientDataRemote;
 
   @GET('/top-headlines?q={keyword}&category={category}&apiKey={apiKey}')
-  Future<NewsModel> fetchNewsByKeyword(@Path('apiKey') String apiKey, @Path('keyword') String keyword,  @Path('category') String category,);
+  Future<NewsModel> fetchNewsByKeyword({
+    @Path('apiKey') required String apiKey,
+    @Path('keyword') required String keyword,
+    @Path('category') required String category,
+  });
 
   @GET('/top-headlines?category={category}&apiKey={apiKey}')
-  Future<NewsModel> fetchNewsByTopic(@Path('apiKey') String apiKey, @Path('category') String category);
+  Future<NewsModel> fetchNewsByTopic({
+    @Path('apiKey') required String apiKey,
+      @Path('category') required String category,
+  });
 }
 
 @injectable
-class RetrofitClientDataRemoteInstance{
-  RetrofitClientDataRemote client(){
+class RetrofitClientDataRemoteInstance {
+  RetrofitClientDataRemote client() {
     return _RetrofitClientDataRemote(Dio());
   }
 }

@@ -11,7 +11,7 @@ class ArticleNewsModel {
     this.title = '',
     this.description = '',
     this.url = '',
-    this.urlToImage = 'kjhvuv',
+    this.urlToImage = '',
     this.publishedAt = '',
     this.content = ''
   });

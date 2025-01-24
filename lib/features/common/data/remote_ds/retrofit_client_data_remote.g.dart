@@ -24,11 +24,11 @@ class _RetrofitClientDataRemote implements RetrofitClientDataRemote {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<NewsModel> fetchNewsByKeyword(
-    String apiKey,
-    String keyword,
-    String category,
-  ) async {
+  Future<NewsModel> fetchNewsByKeyword({
+    required String apiKey,
+    required String keyword,
+    required String category,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -61,10 +61,10 @@ class _RetrofitClientDataRemote implements RetrofitClientDataRemote {
   }
 
   @override
-  Future<NewsModel> fetchNewsByTopic(
-    String apiKey,
-    String category,
-  ) async {
+  Future<NewsModel> fetchNewsByTopic({
+    required String apiKey,
+    required String category,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

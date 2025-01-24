@@ -15,7 +15,7 @@ ArticleNewsModel _$ArticleNewsModelFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String? ?? '',
       description: json['description'] as String? ?? '',
       url: json['url'] as String? ?? '',
-      urlToImage: json['urlToImage'] as String? ?? 'kjhvuv',
+      urlToImage: json['urlToImage'] as String? ?? '',
       publishedAt: json['publishedAt'] as String? ?? '',
       content: json['content'] as String? ?? '',
     );

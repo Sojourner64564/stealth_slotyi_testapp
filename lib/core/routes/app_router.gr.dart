@@ -30,10 +30,17 @@ class BottomNavigationRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [DetailedScreen]
-class DetailedRoute extends PageRouteInfo<void> {
-  const DetailedRoute({List<PageRouteInfo>? children})
-      : super(
+class DetailedRoute extends PageRouteInfo<DetailedRouteArgs> {
+  DetailedRoute({
+    Key? key,
+    required ArticleNewsEntity articleNewsEntity,
+    List<PageRouteInfo>? children,
+  }) : super(
           DetailedRoute.name,
+          args: DetailedRouteArgs(
+            key: key,
+            articleNewsEntity: articleNewsEntity,
+          ),
           initialChildren: children,
         );
 
@@ -42,7 +49,46 @@ class DetailedRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const DetailedScreen();
+      final args = data.argsAs<DetailedRouteArgs>();
+      return DetailedScreen(
+        key: args.key,
+        articleNewsEntity: args.articleNewsEntity,
+      );
+    },
+  );
+}
+
+class DetailedRouteArgs {
+  const DetailedRouteArgs({
+    this.key,
+    required this.articleNewsEntity,
+  });
+
+  final Key? key;
+
+  final ArticleNewsEntity articleNewsEntity;
+
+  @override
+  String toString() {
+    return 'DetailedRouteArgs{key: $key, articleNewsEntity: $articleNewsEntity}';
+  }
+}
+
+/// generated route for
+/// [FavoriteNewsScreen]
+class FavoriteNewsRoute extends PageRouteInfo<void> {
+  const FavoriteNewsRoute({List<PageRouteInfo>? children})
+      : super(
+          FavoriteNewsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FavoriteNewsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const FavoriteNewsScreen();
     },
   );
 }
@@ -62,6 +108,25 @@ class MainRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const MainScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [MainWrapperPage]
+class MainWrapperRoute extends PageRouteInfo<void> {
+  const MainWrapperRoute({List<PageRouteInfo>? children})
+      : super(
+          MainWrapperRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MainWrapperRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const MainWrapperPage();
     },
   );
 }

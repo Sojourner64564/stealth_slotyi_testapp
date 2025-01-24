@@ -74,8 +74,8 @@ class FetchNewsControllerCubit extends Cubit<FetchNewsControllerState> {
     }
   }
 
-  /// Метод обновления новостей для рефреш индикатора
   Future<void> fetchNewsByCategoryIDAndMBKeyword() async{
+    emit(FetchNewsControllerStateLoading());
     if(keywordString.isEmpty){
       final either = await fetchNewsUC.fetchNewsByTopic(_list[categoryIndex]);
       final fold = either.fold((failure)=>failure, (response)=>response);
@@ -96,9 +96,7 @@ class FetchNewsControllerCubit extends Cubit<FetchNewsControllerState> {
         return;
       }
     }else{
-      print('dsfsdfs');
       final either = await fetchNewsUC.fetchNewsByKeyword(keywordString, _list[categoryIndex]);
-      print('1');
       final fold = either.fold((failure)=>failure, (response)=>response);
       if(fold is AppFailure){
         emit(FetchNewsControllerStateErrorAppFailure());

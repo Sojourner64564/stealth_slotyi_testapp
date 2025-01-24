@@ -13,8 +13,8 @@ class BottomNavigationScreen extends StatelessWidget {
     return AutoTabsScaffold(
       extendBody: true,
       routes: const [
-        MainRoute(),
-        DetailedRoute(),
+        MainWrapperRoute(),
+        FavoriteNewsRoute(),
       ],
       animationDuration: const Duration(seconds: 0),
       bottomNavigationBuilder: (BuildContext context, TabsRouter tabRouter){
