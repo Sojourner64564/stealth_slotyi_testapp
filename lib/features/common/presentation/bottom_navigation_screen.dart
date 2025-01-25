@@ -16,7 +16,7 @@ class BottomNavigationScreen extends StatelessWidget {
         MainWrapperRoute(),
         FavoriteNewsRoute(),
       ],
-      animationDuration: const Duration(seconds: 2),
+      animationDuration: const Duration(milliseconds: 300),
       bottomNavigationBuilder: (BuildContext context, TabsRouter tabRouter){
         return  Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),

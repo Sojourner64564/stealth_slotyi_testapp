@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:stealth_slotyi_testapp/core/routes/app_router.dart';
 
 @RoutePage()
 class MainWrapperPage extends StatelessWidget implements AutoRouteWrapper {
@@ -7,7 +8,7 @@ class MainWrapperPage extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    return const AutoRouter();
+    return const EmptyRouterPage();
   }
 
   @override
