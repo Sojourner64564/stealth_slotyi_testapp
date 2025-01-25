@@ -17,7 +17,6 @@ class DetailedScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              context.router.back();
             },
             icon: const Icon(
               Icons.star_border_outlined,
@@ -27,7 +26,9 @@ class DetailedScreen extends StatelessWidget {
           ),
         ],
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            context.router.popUntilRouteWithPath('news');
+          },
           icon: const Icon(
             Icons.arrow_back,
             size: 50,

@@ -24,7 +24,7 @@ class AppRouter extends RootStackRouter {
       children: [
         AutoRoute(
             path: "wrapper",
-            page: MainWrapperRoute.page,
+          page: MainWrapperRoute.page,
             children: [
               AutoRoute(
                 path: 'news',
@@ -43,4 +43,9 @@ class AppRouter extends RootStackRouter {
         ),
       ],
     )  ];
+}
+
+
+class EmptyRouterPage extends AutoRouter {
+  const EmptyRouterPage({super.key});
 }

@@ -18,6 +18,7 @@ class NewsTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(imgUrl);
     return Container(
       height: 112,
       decoration: BoxDecoration(
@@ -36,20 +37,24 @@ class NewsTileWidget extends StatelessWidget {
               topLeft: Radius.circular(16),
               bottomLeft: Radius.circular(16),
             ),
-            child: Image.network(
-              imgUrl,
-              fit: BoxFit.cover,
+            child: SizedBox(
               width: 123,
               height: 112,
-              errorBuilder: (BuildContext context, Object object,
-                  StackTrace? stackTrace) {
-                return Image.asset(
-                  'assets/images/mock_image/mock_image.png',
-                  fit: BoxFit.cover,
-                  width: 123,
-                  height: 112,
-                );
-              },
+              child: Image.network(
+                imgUrl,
+                fit: BoxFit.cover,
+                width: 123,
+                height: 112,
+                errorBuilder: (BuildContext context, Object object,
+                    StackTrace? stackTrace) {
+                  return Image.asset(
+                    'assets/images/mock_image/mock_image.png',
+                    fit: BoxFit.cover,
+                    width: 123,
+                    height: 112,
+                  );
+                },
+              ),
             ),
           ),
           Expanded(
